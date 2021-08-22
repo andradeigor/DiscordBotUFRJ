@@ -1,0 +1,16 @@
+module.exports = {
+	name: 'dontpad',
+	description: 'Acha o dontpad certo para aula de Comp1',
+	execute(message) {
+        var now = new Date();
+        const day = String(now.getDate());
+        if(now.getDate() < 10){
+            day = '0' + day;
+        }
+        var month = String(now.getMonth() + 1);
+        if((now.getMonth() + 1) < 10){
+            month = "0" + month
+        }
+        message.reply(`o código do DontPad de Comp1 de hoje é https://dontpad.com/Comp1${day}${month}`);
+    }
+}

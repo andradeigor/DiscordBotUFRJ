@@ -22,8 +22,14 @@ client.once('ready', () => {
   client.user.setActivity('f.help para ver os comandos!');
 });
 
-client.on('message', (message) => {
-  if (!message.content.startsWith(prefix) || message.author.bot) return;
+client.on('guildMemberAdd', member => {
+	const channel = member.guild.channels.cache.find(ch => ch.name === 'member-log');
+	if (!channel) return;
+	channel.send(`Welcome to the server, ${member}!`);
+});
+
+client.on('message', message => {
+	  if (!message.content.startsWith(prefix) || message.author.bot) return;
 
   const args = message.content.slice(prefix.length).trim().split(/ +/);
   const command = args.shift().toLowerCase();
