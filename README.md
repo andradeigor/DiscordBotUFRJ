@@ -7,14 +7,14 @@
 
 
 ## Sobre
-Este projeto consiste em um bot para o servidor no Discord para o curso de Ciência da Computação de 2021.1. Foi desenvolvido primariamente por [Igor Andrade](https://github.com/andradeigor), [Hugo Folloni](https://github.com/hugofolloni) e [Leonardo de Melo](https://github.com/LeoBardineo), mas contou com o apoio de todo o servidor para conselhos, testes e ideias.
+Este projeto consiste em um bot para o servidor no Discord para o curso de Ciência da Computação de 2021.1 da UFRJ. Foi desenvolvido primariamente por [Igor Andrade](https://github.com/andradeigor), [Hugo Folloni](https://github.com/hugofolloni) e [Leonardo de Melo](https://github.com/LeoBardineo), mas contou com o apoio de todo o servidor para conselhos, testes e ideias.
 
 ## Como Usar:
 
 ### Rodando o bot localmente
 
 ```bash
- # CLonar esse repositório
+ # Clonar esse repositório
  $ git clone https://github.com/andradeigor/DiscordBotUFRJ
 
  # Acessando a pasta do projeto 
