@@ -1,14 +1,24 @@
+const fetch = require('node-fetch');
+
+const execute = async (message) => {
+  if (message.author.id === '213024732772171776') {
+    let resposta = `seu pokemón aleatório é Psyduck\n`;
+    resposta += `Aqui está a página dele: https://www.pokemon.com/br/pokedex/Psyduck`;
+    return message.reply(resposta);
+  }
+
+  const random = Math.floor(Math.random() * (151 - 1)) + 1;
+  const api = `https://pokeapi.co/api/v2/pokemon/${random}`;
+  const response = await fetch(api);
+  const data = await response.json();
+  const pokerandom = data.name.charAt(0).toUpperCase() + data.name.slice(1);
+  let resposta = `seu pokemón aleatório é ${pokerandom}\n`;
+  resposta += `Aqui está a página dele: https://www.pokemon.com/br/pokedex/${pokerandom}`;
+  return message.reply(resposta);
+};
+
 module.exports = {
-	name: 'pokemon',
-	description: 'Gera um pokemon aleatório',
-	execute(message) {
-		if(message.author.id == "213024732772171776"){
-			return message.reply(`seu pokemón aleatório é Psyduck\nAqui está a página dele: https://www.pokemon.com/br/pokedex/Psyduck`)
-		}
-		else{
-		var Pokemon = ["Bulbasaur","Ivysaur","Venusaur","Charmander","Charmeleon","Charizard","Squirtle","Wartortle","Blastoise","Caterpie","Metapod","Butterfree","Weedle","Kakuna","Beedrill","Pidgey","Pidgeotto","Pidgeot","Rattata","Raticate","Spearow","Fearow","Ekans","Arbok","Pikachu","Raichu","Sandshrew","Sandslash","Nidoran","Nidorina","Nidoqueen","Nidoran","Nidorino","Nidoking","Clefairy","Clefable","Vulpix","Ninetales","Jigglypuff","Wigglytuff","Zubat","Golbat","Oddish","Gloom","Vileplume","Paras","Parasect","Venonat","Venomoth","Diglett","Dugtrio","Meowth","Persian","Psyduck","Golduck","Mankey","Primeape","Growlithe","Arcanine","Poliwag","Poliwhirl","Poliwrath","Abra","Kadabra","Alakazam","Machop","Machoke","Machamp","Bellsprout","Weepinbell","Victreebel","Tentacool","Tentacruel","Geodude","Graveler","Golem","Ponyta","Rapidash","Slowpoke","Slowbro","Magnemite","Magneton","Farfetch'd","Doduo","Dodrio","Seel","Dewgong","Grimer","Muk","Shellder","Cloyster","Gastly","Haunter","Gengar","Onix","Drowzee","Hypno","Krabby","Kingler","Voltorb","Electrode","Exeggcute","Exeggutor","Cubone","Marowak","Hitmonlee","Hitmonchan","Lickitung","Koffing","Weezing","Rhyhorn","Rhydon","Chansey","Tangela","Kangaskhan","Horsea","Seadra","Goldeen","Seaking","Staryu","Starmie","Mr. Mime","Scyther","Jynx","Electabuzz","Magmar","Pinsir","Tauros","Magikarp","Gyarados","Lapras","Ditto","Eevee","Vaporeon","Jolteon","Flareon","Porygon","Omanyte","Omastar","Kabuto","Kabutops","Aerodactyl","Snorlax","Articuno","Zapdos","Moltres","Dratini","Dragonair","Dragonite","Mewtwo","Mew"];
-        var random = Math.floor(Math.random() * (151 - 1)) + 1
-        var Pokerandom = Pokemon[random];
-        message.reply(`seu pokemón aleatório é ${Pokerandom}\nAqui está a página dele: https://www.pokemon.com/br/pokedex/${Pokerandom}`)
-	}},
+  name: 'pokemon',
+  description: 'Gera um pokemon aleatório',
+  execute,
 };
