@@ -33,7 +33,7 @@ Rodando o bot localmente
 ```
 
 ## 📜 Comandos
-
+- **f.base**: Dado um numero, a base dele e a base destino converte ele.
 - **f.capslock**: RETORNA O TWEET DA ROBERTA MIRANDA.
 - **f.champ**: retorna a página do op.gg do campeão de LoL que escrever após o comando.
 - **f.covid**: retorna os casos e covid desde o início até agora no Rio de Janeiro.
