@@ -1,4 +1,4 @@
-const execute = (message, args) => { 
+const execute = (message,client ,args) => { 
 	if (!args.length) {
 		return message.channel.send(`Você não disse valores suficientes, ${message.author}! Busque a ajuda necessária no ".help"`);
 	} 

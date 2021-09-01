@@ -2,8 +2,7 @@ const fs = require('fs');
 const Discord = require('discord.js');
 require('dotenv').config();
 
-const { prefix, token } = process.env;
-
+const { PREFIX, TOKEN } = process.env;
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
@@ -31,9 +30,9 @@ client.on('guildMemberAdd', (member) => {
 });
 
 client.on('message', (message) => {
-  if (!message.content.startsWith(prefix) || message.author.bot) return;
+  if (!message.content.startsWith(PREFIX) || message.author.bot) return;
 
-  const args = message.content.slice(prefix.length).trim().split(/ +/);
+  const args = message.content.slice(PREFIX.length).trim().split(/ +/);
   const command = args.shift().toLowerCase();
 
   if (!client.commands.has(command)) return;
@@ -46,4 +45,4 @@ client.on('message', (message) => {
   }
 });
 
-client.login(token);
+client.login(TOKEN);
