@@ -9,7 +9,7 @@ const execute = (message) => {
     month = `0${month}`;
   }
   message.reply(
-    `o código do DontPad de Comp1 de hoje é https://dontpad.com/Comp1${day}${month}`
+    `o código do DontPad de Comp1 de hoje é https://dontpad.com/aulaComp1${day}${month}`
   );
 };
 
