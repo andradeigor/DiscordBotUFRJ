@@ -1,5 +1,6 @@
 const Jimp = require('jimp');
 const path = require('path');
+const fs = require('fs');
 
 const execute = async (message) => {
   try {
@@ -10,9 +11,7 @@ const execute = async (message) => {
     const userImage = await Jimp.read(user.displayAvatarURL({ format: 'png' }));
     const userName = user.username;
 
-    const supremacyTemplate = await Jimp.read(
-      path.join(__dirname, '../asset/supremacy-template.jpg')
-    );
+    const supremacyTemplate = await Jimp.read(path.join(__dirname, '../asset/supremacy-template.jpg'));
     const font = await Jimp.loadFont(Jimp.FONT_SANS_64_BLACK);
 
     userImage.resize(250, 250);
@@ -21,13 +20,15 @@ const execute = async (message) => {
       mode: Jimp.BLEND_SOURCE_OVER,
     });
 
-    const supremacyPath = './asset/tmp/supremacyUser.png';
+    const supremacyPath = './asset/supremacyUser.png';
 
     await supremacyTemplate.writeAsync(supremacyPath);
 
-    message.channel.send(`:place_of_worship: ${userName} supremacy apenas.`, {
+    await message.channel.send(`:place_of_worship: ${userName} supremacy apenas.`, {
       files: [supremacyPath],
     });
+
+    fs.unlinkSync(supremacyPath);
   } catch (error) {
     console.log(error);
   } finally {
