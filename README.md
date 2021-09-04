@@ -34,6 +34,7 @@ Rodando o bot localmente
 
 ## 📜 Comandos
 
+- **f.base**: Dado um numero, a base dele e a base destino converte ele.
 - **f.capslock**: RETORNA O TWEET DA ROBERTA MIRANDA.
 - **f.champ**: retorna a página do op.gg do campeão de LoL que escrever após o comando.
 - **f.covid**: retorna os casos e covid desde o início até agora no Rio de Janeiro.
@@ -43,6 +44,7 @@ Rodando o bot localmente
 - **f.pokemon**: retorna um pokemon aleatório (menos para uma usuária específica).
 - **f.server**: retorna informações sobre o server (CUIDADO: depende de cache).
 - **f.user**: retorna a foto do usuário mencionado (ou a sua).
+- **f.supremacy**: realiza o meme do supremacy com a pessoa marcada.
 
 ### 📌 Comandos futuros:
 
