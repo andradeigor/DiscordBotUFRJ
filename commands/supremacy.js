@@ -6,7 +6,7 @@ const execute = async (message) => {
   try {
     message.channel.startTyping();
 
-    const member = message.mentions.members.first() || message.member;
+    const member =  message.member|| message.mentions.members.first();
     const { user } = member;
     const userImage = await Jimp.read(user.displayAvatarURL({ format: 'png' }));
     const userName = user.username;
