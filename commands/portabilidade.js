@@ -6,6 +6,6 @@ const execute = (message) => {
 
 module.exports = {
   name: 'portabilidade',
-  description: 'Qual é a portabilidade do C?',
+  description: 'Meme da portabilidade do C',
   execute,
 };

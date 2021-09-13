@@ -14,6 +14,6 @@ const execute = (message) => {
 
 module.exports = {
   name: 'server',
-  description: 'Server name!',
+  description: 'Informações sobre o server',
   execute,
 };
