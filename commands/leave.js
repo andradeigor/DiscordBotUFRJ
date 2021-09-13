@@ -5,6 +5,6 @@ const execute = (message) => {
 
 module.exports = {
   name: 'leave',
-  description: 'Force the bot to quit the voice channel!',
+  description: 'Força o bot a sair da sala de voz',
   execute,
 };
