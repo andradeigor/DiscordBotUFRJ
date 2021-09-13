@@ -43,8 +43,8 @@ Rodando o bot localmente
 - **f.leave**: o bot da sala de audio.
 - **f.pokemon**: retorna um pokemon aleatório (menos para uma usuária específica).
 - **f.server**: retorna informações sobre o server (CUIDADO: depende de cache).
-- **f.user**: retorna a foto do usuário mencionado (ou a sua).
 - **f.supremacy**: realiza o meme do supremacy com a pessoa marcada.
+- **f.user**: retorna a foto do usuário mencionado (ou a sua).
 
 ### 📌 Comandos futuros:
 
