@@ -38,10 +38,13 @@ Rodando o bot localmente
 - **f.capslock**: RETORNA O TWEET DA ROBERTA MIRANDA.
 - **f.champ**: retorna a página do op.gg do campeão de LoL que escrever após o comando.
 - **f.covid**: retorna os casos e covid desde o início até agora no Rio de Janeiro.
+- **f.docs**: retorna a página da documentação do bot.
 - **f.dontpad**: retorna o link do dontpad para Computação 1 (matéria da graduação) para o dia de hoje.
 - **f.freegame**: fala os jogos gratuitos da semana (dependemos da API).
 - **f.leave**: o bot da sala de audio.
 - **f.pokemon**: retorna um pokemon aleatório (menos para uma usuária específica).
+- **f.portabilidade**: retorna o meme da portabilidade do C.
+- **f.sapo**: sapo.
 - **f.server**: retorna informações sobre o server (CUIDADO: depende de cache).
 - **f.supremacy**: realiza o meme do supremacy com a pessoa marcada.
 - **f.user**: retorna a foto do usuário mencionado (ou a sua).
