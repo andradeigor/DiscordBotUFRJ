@@ -1,7 +1,7 @@
 //numero baseAtual baseDestino
 
 const execute = (message, client ,args) =>{
-    if(!args.length || args.length < 3){
+    if(!args.length || args.length != 3){
         return message.channel.send(`Você não disse valores suficientes, ${message.author}! Busque a ajuda necessária no ".help"`)
     }
     const num = args[0]
