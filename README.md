@@ -51,7 +51,6 @@ Rodando o bot localmente
 
 ### 📌 Comandos futuros:
 
-- Conversor de bases
 - Mini calendário de atividades
 
 ## 💻 Tecnologias
