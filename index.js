@@ -6,9 +6,7 @@ const { PREFIX, TOKEN } = process.env;
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
-const commandFiles = fs
-  .readdirSync('./commands')
-  .filter((file) => file.endsWith('.js'));
+const commandFiles = fs.readdirSync('./commands').filter((file) => file.endsWith('.js'));
 
 commandFiles.forEach((file) => {
   // eslint-disable-next-line
@@ -22,9 +20,7 @@ client.once('ready', () => {
 });
 
 client.on('guildMemberAdd', (member) => {
-  const channel = member.guild.channels.cache.find(
-    (ch) => ch.name === 'member-log'
-  );
+  const channel = member.guild.channels.cache.find((ch) => ch.name === 'member-log');
   if (!channel) return;
   channel.send(`Welcome to the server, ${member}!`);
 });

@@ -8,9 +8,7 @@ const execute = (message) => {
   if (now.getMonth() + 1 < 10) {
     month = `0${month}`;
   }
-  message.reply(
-    `o código do DontPad de Comp1 de hoje é https://dontpad.com/aulaComp1${day}${month}`
-  );
+  message.reply(`o código do DontPad de Comp1 de hoje é https://dontpad.com/aulaComp1${day}${month}`);
 };
 
 module.exports = {
