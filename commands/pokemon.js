@@ -11,7 +11,7 @@ const execute = async (message) => {
     resposta += `Aqui está a página dele: https://www.pokemon.com/br/pokedex/Lopunny`;
     return message.reply(resposta);
   }
-  
+
   const random = Math.floor(Math.random() * (151 - 1)) + 1;
   const api = `https://pokeapi.co/api/v2/pokemon/${random}`;
   const response = await fetch(api);

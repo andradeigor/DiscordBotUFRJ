@@ -1,16 +1,19 @@
-const execute = (message,client ,args) => { 
-	if (!args.length) {
-		return message.channel.send(`Você não disse valores suficientes, ${message.author}! Busque a ajuda necessária no ".help"`);
-	} 
+const execute = (message, client, args) => {
+  try {
+    if (!args.length) {
+      throw new Error(`Você não disse valores suficientes, ${message.author}! Busque a ajuda necessária no ".help"`);
+    }
 
-	var champ = args[0]
+    const champ = args[0];
 
-	message.reply(`aqui está a página do op.gg requerida:\nhttps://kr.op.gg/champion/${champ}/statistics`);
-}
-
-module.exports = {
-	name: 'champ',
-	description: 'Te mostra o op.gg do campeão',
-	execute,
+    message.reply(`aqui está a página do op.gg requerida:\nhttps://kr.op.gg/champion/${champ}/statistics`);
+  } catch (error) {
+    message.channel.send(error.message);
+  }
 };
 
+module.exports = {
+  name: 'champ',
+  description: 'Te mostra o op.gg do campeão',
+  execute,
+};

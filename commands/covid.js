@@ -5,9 +5,7 @@ const execute = async (message) => {
   const response = await fetch(api);
   const data = await response.json();
   const [casos, mortes] = [data.cases, data.deaths];
-  message.reply(
-    `atualmente, desde o inicio da pandemia, foram registrados ${casos} casos e infelizes ${mortes} :'c`
-  );
+  message.reply(`atualmente, desde o inicio da pandemia, foram registrados ${casos} casos e infelizes ${mortes} :'c`);
 };
 
 module.exports = {
