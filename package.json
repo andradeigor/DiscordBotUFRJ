@@ -19,6 +19,7 @@
     "express": "^4.17.1",
     "ffmpeg-static": "^4.4.0",
     "jimp": "^0.16.1",
+    "mongoose": "^6.0.14",
     "node-fetch": "^2.6.1",
     "open": "^8.2.1",
     "openm": "^1.1.0",
