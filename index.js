@@ -1,10 +1,13 @@
 const fs = require('fs');
+const mongoose = require('mongoose');
 const Discord = require('discord.js');
 require('dotenv').config();
 
-const { PREFIX, TOKEN } = process.env;
+const { PREFIX, TOKEN, DB_PASSWORD } = process.env;
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
+
+mongoose.connect(`mongodb+srv://fred:${DB_PASSWORD}@natal.z7bzq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
 
 const commandFiles = fs.readdirSync('./commands').filter((file) => file.endsWith('.js'));
 

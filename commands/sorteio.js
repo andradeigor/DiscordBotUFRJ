@@ -1,5 +1,20 @@
 let listaSorteio = [];
 
+const mongoose = require('mongoose');
+require('dotenv').config();
+
+const userSchema = mongoose.Schema({
+  _id: { type: mongoose.Schema.Types.String },
+});
+
+const sorteioSchema = mongoose.Schema({
+  _id: { type: mongoose.Schema.Types.String },
+  pessoaTirada: { type: mongoose.Schema.Types.String },
+});
+
+const User = mongoose.model('User', userSchema);
+const Sorteio = mongoose.model('Sorteio', sorteioSchema);
+
 const shuffle = (array) => {
   const copiaArray = array;
   let currentIndex = copiaArray.length;
@@ -36,50 +51,57 @@ const execute = async (message, client, args) => {
     message.channel.startTyping();
 
     if (!args.length) {
-      throw new Error(`Você não passou valores, ${message.author}! Busque a ajuda necessária no "${process.env.PREFIX}help"`);
+      const busca = await Sorteio.findById(message.author.id);
+      if (!busca) {
+        throw new Error('O sorteio ainda não foi sorteado!');
+      }
+      message.author.send(`Você tirou <@${busca.pessoaTirada}> no sorteio atual!`);
     }
 
     if (args[0] === 'entrar') {
-      listaSorteio.forEach((element) => {
-        if (element === message.author.id) {
-          throw new Error(`Você já está no sorteio!!!!!!!!!!!!!!!!!!`);
-        }
-      });
-      listaSorteio.push(message.author.id);
+      const busca = await User.findById(message.author.id);
+      if (busca) {
+        throw new Error('Você já está no sorteio atual!');
+      }
+      const usuario = new User({ _id: message.author.id });
+      await usuario.save();
       message.author.send('Você entrou no sorteio do server! c:');
     }
 
     if (args[0] === 'sair') {
-      console.log(listaSorteio);
-      let listHasUser = false;
-      let indexOfUser = 0;
-      listaSorteio.forEach((element, index) => {
-        if (element === message.author.id) {
-          listHasUser = true;
-          indexOfUser = index;
-        }
-      });
-
-      if (!listHasUser) {
-        throw new Error('Você não está no sorteio!!!!!!!!!!!!');
+      const busca = await User.findById(message.author.id);
+      if (!busca) {
+        throw new Error('Você não está no sorteio!');
       }
-
-      listaSorteio.splice(indexOfUser, 1);
-      console.log(listaSorteio);
+      await User.deleteOne({ _id: message.author.id });
       message.author.send('Você saiu do sorteio do server! :c');
     }
 
     if (args[0] === 'sortear') {
+      if (message.author.id !== '198943365990055936') {
+        throw new Error('Você não é o LeoBardo para sortear!');
+      }
+      listaSorteio = await User.find();
+      if (!listaSorteio.length) {
+        throw new Error('Não há participantes!');
+      }
+      const sorteioRolando = await Sorteio.find();
+      if (sorteioRolando.length) {
+        await Sorteio.deleteMany({});
+      }
+      /* eslint no-underscore-dangle: 0 */
+      listaSorteio = listaSorteio.map((item) => item._id);
       let copiaSorteio = listaSorteio;
       copiaSorteio = sortear(copiaSorteio);
       listaSorteio.forEach(async (el) => {
         const randomUser = copiaSorteio.shift();
         console.log(`${el} => ${randomUser}`);
+        const sorteioTirado = new Sorteio({ _id: el, pessoaTirada: randomUser });
+        await sorteioTirado.save();
         const user = await client.users.fetch(el, false);
-        user.send(`Você tirou <@${randomUser}>!`);
+        user.send(`O sorteio foi realizado e você tirou <@${randomUser}>!`);
       });
-      listaSorteio = [];
-      message.channel.send('ve a dm ai');
+      message.channel.send('Sorteio sorteado! Chequem suas DMs!');
     }
   } catch (error) {
     message.channel.send(error.message);
