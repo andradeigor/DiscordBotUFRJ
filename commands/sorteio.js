@@ -50,10 +50,6 @@ const execute = async (message, client, args) => {
   try {
     message.channel.startTyping();
 
-    if (message.author.id !== '198943365990055936') {
-      throw new Error('Você não tem permissão para isso. Apenas LeoBardo pode realizar o sorteio :sunglasses:');
-    }
-
     if (!args.length) {
       const busca = await Sorteio.findById(message.author.id);
       if (!busca) {
